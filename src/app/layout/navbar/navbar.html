@@ -1,0 +1,28 @@
+<div class="row">
+  <nav class="navbar white-bg navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+      <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed"
+        type="button">
+        <i class="fa fa-reorder"></i>
+      </button>
+      <a ui-sref="index.refill" class="navbar-brand">
+        <image src="\assets\images\logo.png">
+      </a>
+    </div>
+    <div class="navbar-collapse" id="navbar" ng-class="{collapse: isCollapsed}">
+      <ul class="nav navbar-top-links navbar-right">
+      <translate-menu></translate-menu>
+        <li ng-if="vm.isLoggedIn()">
+          <a ng-click="vm.logout()">
+            <i class="fa fa-sign-out"></i> {{'NAVBAR_LOGOUT' | translate}}
+          </a>
+        </li>
+        <li ng-if="!vm.isLoggedIn()">
+          <a ui-sref="login">
+            <i class="fa fa-sign-out"></i> {{'NAVBAR_LOGIN' | translate}}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
