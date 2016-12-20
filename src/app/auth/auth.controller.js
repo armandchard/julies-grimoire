@@ -29,7 +29,7 @@
     function login(user) {
       return authService.login(user)
         .then(function() {
-          $state.go('index.sales');
+          $state.go('index.receipt');
         })
         .catch(function(error) {
           vm.error = error;

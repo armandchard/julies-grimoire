@@ -20,7 +20,7 @@
         firebaseDataService.getCurrentUser().$loaded(function (user) {
           var currentUser = user;
           if (!currentUser.admin) {
-            $state.go('index.sales');
+            $state.go('index.receipt');
           }
         });
       }

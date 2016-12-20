@@ -18,94 +18,34 @@
           }]
         }
       })
-      .state('index.profile', {
-        url: '/profile',
-        templateUrl: 'app/profile/profile.html',
-        controller: 'ProfileController',
+      .state('index.receipt', {
+        url: '/receipts',
+        templateUrl: 'app/receipt/receipt.html',
+        controller: 'ReceiptController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'Profile view',
+          pageTitle: 'Receipts view',
           requiresLogin: true
         }
       })
-      .state('index.product', {
-        url: '/product',
-        templateUrl: 'app/product/product.html',
-        controller: 'ProductController',
+      .state('index.ingredient', {
+        url: '/ingredients',
+        templateUrl: 'app/ingredient/ingredient.html',
+        controller: 'IngredientController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'Products list',
+          pageTitle: 'Ingredients view',
           requiresLogin: true
         }
       })
-      .state('index.product-details', {
-        url: '/product/:id',
-        templateUrl: 'app/product/product-details.html',
-        controller: 'ProductDetailsController',
+      .state('index.category', {
+        url: '/categories',
+        templateUrl: 'app/category/category.html',
+        controller: 'CategoryController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'Product details',
+          pageTitle: 'Categories view',
           requiresLogin: true
-        }
-      })
-      .state('index.stock', {
-        url: '/stock',
-        templateUrl: 'app/stock/stock.html',
-        controller: 'StockController',
-        controllerAs: 'vm',
-        data: {
-          pageTitle: 'Stock view',
-          requiresLogin: true
-        }
-      })
-      .state('index.box', {
-        url: '/box',
-        templateUrl: 'app/box/box.html',
-        controller: 'BoxController',
-        controllerAs: 'vm',
-        data: {
-          pageTitle: 'Box view',
-          requiresLogin: true
-        }
-      })
-      .state('index.refill', {
-        url: '/refill',
-        templateUrl: 'app/refill/refill.html',
-        controller: 'RefillController',
-        controllerAs: 'vm',
-        data: {
-          pageTitle: 'Refill view',
-          requiresLogin: true
-        }
-      })
-      .state('index.print-refill', {
-        url: '/refill/:id/print',
-        templateUrl: 'app/refill/print-refill.html',
-        controller: 'RefillController',
-        controllerAs: 'vm',
-        data: {
-          pageTitle: 'Refill print',
-          requiresLogin: true
-        }
-      })
-      .state('index.admin', {
-        url: '/admin',
-        templateUrl: 'app/admin/admin.html',
-        controller: 'AdminController',
-        controllerAs: 'vm',
-        data: {
-          pageTitle: 'Admin',
-          needAdmin: true
-        }
-      })
-      .state('index.admin-user', {
-        url: '/admin/users/:id',
-        templateUrl: 'app/admin/admin-user.html',
-        controller: 'BrandController',
-        controllerAs: 'vm',
-        data: {
-          pageTitle: 'Admin users',
-          needAdmin: true
         }
       })
       .state('index.sales', {
@@ -116,16 +56,6 @@
         data: {
           pageTitle: 'Sales view',
           requiresLogin: true
-        }
-      })
-      .state('index.notification', {
-        url: '/notifications',
-        templateUrl: 'app/notification/notification.html',
-        controller: 'NotificationController',
-        controllerAs: 'vm',
-        data: {
-          pageTitle: 'user\'s notifications',
-          needAdmin: true
         }
       })
     $urlRouterProvider.otherwise('/login');

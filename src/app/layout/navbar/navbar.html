@@ -6,12 +6,23 @@
         <i class="fa fa-reorder"></i>
       </button>
       <a ui-sref="index.refill" class="navbar-brand">
-        <image src="\assets\images\logo.png">
+        <h3>Julie's Grimoire</h3>
       </a>
     </div>
     <div class="navbar-collapse" id="navbar" ng-class="{collapse: isCollapsed}">
+      <ul class="nav navbar-nav">
+        <li ui-sref-active="active" ng-click="isCollapsed = !isCollapsed">
+          <a ui-sref="index.receipt">Recettes</a>
+        </li>
+        <li ui-sref-active="active" ng-click="isCollapsed = !isCollapsed">
+          <a ui-sref="index.ingredient">Ingrédients</a>
+        </li>
+        <li ui-sref-active="active" ng-click="isCollapsed = !isCollapsed">
+          <a ui-sref="index.category">Catégories</a>
+        </li>
+      </ul>
       <ul class="nav navbar-top-links navbar-right">
-      <translate-menu></translate-menu>
+        <!--<translate-menu></translate-menu>-->
         <li ng-if="vm.isLoggedIn()">
           <a ng-click="vm.logout()">
             <i class="fa fa-sign-out"></i> {{'NAVBAR_LOGOUT' | translate}}
