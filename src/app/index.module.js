@@ -32,7 +32,8 @@
       'mbc.sale',
       'mbc.layout',
       'mbc.category',
-      'mbc.ingredient'
+      'mbc.ingredient',
+      'mbc.receipt'
       // 'mbc.profile',
       // 'mbc.product'
     ]);

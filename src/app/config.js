@@ -7,11 +7,11 @@
 
   function firebaseConfig() {
     var config = {
-      apiKey: "AIzaSyCsCOAdNseQv_4pSTx_8j3Ek7yCfl6578o",
-      authDomain: "test-1e6a6.firebaseapp.com",
-      databaseURL: "https://test-1e6a6.firebaseio.com",
-      storageBucket: "test-1e6a6.appspot.com",
-      messagingSenderId: "915148570252"
+      apiKey: "AIzaSyCmL8hsfv4DY-4QMR638tL--lyWnXNok-Y",
+      authDomain: "julies-grimoire.firebaseapp.com",
+      databaseURL: "https://julies-grimoire.firebaseio.com",
+      storageBucket: "julies-grimoire.appspot.com",
+      messagingSenderId: "309428091870"
     };
     firebase.initializeApp(config);
   }

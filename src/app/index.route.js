@@ -28,6 +28,26 @@
           requiresLogin: true
         }
       })
+      .state('index.add-receipt', {
+        url: '/receipt/add',
+        templateUrl: 'app/receipt/add-receipt.html',
+        controller: 'ReceiptDetailController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'New receipt',
+          requiresLogin: true
+        }
+      })
+      .state('index.edit-receipt', {
+        url: '/receipt/:id/edit',
+        templateUrl: 'app/receipt/add-receipt.html',
+        controller: 'ReceiptDetailController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'New receipt',
+          requiresLogin: true
+        }
+      })
       .state('index.ingredient', {
         url: '/ingredients',
         templateUrl: 'app/ingredient/ingredient.html',

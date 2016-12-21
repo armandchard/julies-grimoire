@@ -32,9 +32,9 @@
       link: function (scope, element) {
         var listener = function (event, toState) {
           // Default title - load on Dashboard 1
-          var title = 'My Box Corner | Admin Page';
+          var title = 'Julie\'s Grimoire | Admin Page';
           // Create your own title pattern
-          if (toState.data && toState.data.pageTitle) title = 'My Box Corner | ' + toState.data.pageTitle;
+          if (toState.data && toState.data.pageTitle) title = 'Julie\'s Grimoire | ' + toState.data.pageTitle;
           $timeout(function () {
             element.text(title);
           });
