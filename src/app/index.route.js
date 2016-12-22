@@ -44,7 +44,7 @@
         controller: 'ReceiptDetailController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'New receipt',
+          pageTitle: 'Edit receipt',
           requiresLogin: true
         }
       })

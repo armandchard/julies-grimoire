@@ -57,7 +57,7 @@
             <div class="product-desc">
               <span class="product-price">{{receipt.price}}</span>
               <small class="text-muted">{{receipt.category.name}}</small>
-              <a href="#" class="product-name"> {{receipt.name}}</a>
+              <a ui-sref="index.edit-receipt({id:receipt.$id})" class="product-name"> {{receipt.name}}</a>
               <div class="small m-t-xs">
                 {{receipt.description}}
               </div>
