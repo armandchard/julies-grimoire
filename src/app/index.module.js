@@ -14,6 +14,7 @@
       'ui.bootstrap',
       'angular-ladda',
       'ui.footable',
+      'slick',
       'toastr',
       'localytics.directives',
       'datatables',
@@ -24,6 +25,7 @@
       'angular-flot',
       'tmh.dynamicLocale',
       'ngLodash',
+      'wu.masonry',
 
       //////
 

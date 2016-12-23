@@ -64,7 +64,7 @@
           }
         }, function () {
           // Upload completed successfully, now we can get the download URL
-          deferred.resolve(uploadTask.snapshot.downloadURL);
+          deferred.resolve({name: file.name, url: uploadTask.snapshot.downloadURL});
         });
       return deferred.promise;
     }

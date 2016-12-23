@@ -27,47 +27,68 @@
   </div>
   <div class="row" ng-if="!vm.loading">
     <div class="row">
-      <div class="col-md-3">
-        <div class="ibox">
-          <div class="ibox-content product-box">
-            <div class="product-imitation">
-              [ INFO ]
-            </div>
-            <div class="product-desc">
-              <span class="product-price">$10</span>
-              <small class="text-muted">Category</small>
-              <a href="#" class="product-name"> Product</a>
-              <div class="small m-t-xs">
-                Many desktop publishing packages and web page editors now.
-              </div>
-              <div class="m-t text-righ">
+      <div masonry>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 masonry-brick" ng-repeat="receipt in vm.receipts | filter: vm.filter">
+          <div class="ibox">
+            <div class="ibox-content product-box">
 
-                <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+              <div class="product-imitation">
+                <slick ng-if="::receipt.images.length > 0" dots="true">
+                  <div ng-repeat="image in ::receipt.images">
+                    <div class="image-imitation">
+                      <img ng-src="{{::image.url}}" alt="image.name">
+                    </div>
+                  </div>
+                </slick>
+                <img ng-if="::receipt.images.length === 0" src="../../assets/images/MBC_grey_logo.png" alt="{{::receipt.name}}">
+              </div>
+              <div class="product-desc" ng-click="vm.showDetail(product)">
+                <span class="product-price">
+                  {{receipt.price}} €
+                </span>
+                <small class="text-muted">{{receipt.category.name}}</small>
+                <a class="product-name">{{::product.base_name}}</a>
+                <a ui-sref="index.edit-receipt({id:receipt.$id})" class="product-name"> {{receipt.name}}</a>
+                <div class="small m-t-xs">
+                  {{receipt.description}}
+                </div>
+                <div class="m-t text-right">
+                  <a ui-sref="index.edit-receipt({id:receipt.$id})" class="btn btn-xs btn-outline btn-primary">Détails <i class="fa fa-long-arrow-right"></i> </a>
+                  <a ng-click="vm.remove(receipt)" class="btn btn-circle btn-outline btn-primary"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-3" ng-repeat="receipt in vm.receipts">
+      <!--<div class="col-md-3" ng-repeat="receipt in vm.receipts">
         <div class="ibox">
           <div class="ibox-content product-box">
             <div class="product-imitation">
-              <img ng-if="receipt.image" src="{{receipt.image}}">
+              <slick ng-if="receipt.images.length > 0" dots="true">
+                <div ng-repeat="image in ::receipt.images">
+                  <div class="image-imitation">
+                    <img src="{{image.url}}" alt="img">
+                  </div>
+                </div>
+              </slick>
+              <img ng-if="::receipt.images.length === 0" src="../../assets/images/MBC_grey_logo.png" alt="{{::receipt.name}}">
             </div>
             <div class="product-desc">
-              <span class="product-price">{{receipt.price}}</span>
+              <span class="product-price">{{receipt.price}} €</span>
               <small class="text-muted">{{receipt.category.name}}</small>
               <a ui-sref="index.edit-receipt({id:receipt.$id})" class="product-name"> {{receipt.name}}</a>
               <div class="small m-t-xs">
                 {{receipt.description}}
               </div>
-              <div class="m-t text-righ">
-                <a href="#" class="btn btn-xs btn-outline btn-primary">Détails <i class="fa fa-long-arrow-right"></i> </a>
+              <div class="m-t text-right">
+                <a ui-sref="index.edit-receipt({id:receipt.$id})" class="btn btn-xs btn-outline btn-primary">Détails <i class="fa fa-long-arrow-right"></i> </a>
+                <a ng-click="vm.remove(receipt)" class="btn btn-circle btn-outline btn-primary"><i class="fa fa-trash" aria-hidden="true"></i></a>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
     </div>
   </div>
 </div>
