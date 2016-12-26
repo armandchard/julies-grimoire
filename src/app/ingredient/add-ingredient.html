@@ -21,7 +21,8 @@
       </div>
       <label class="col-sm-2 control-label">Infos</label>
       <div class="col-sm-10">
-        <textarea class="form-control" ng-model="vm.ingredient.infos"></textarea>
+        <summernote ng-model="vm.ingredient.infos" config="vm.noteOptions"></summernote>
+        <!--<textarea class="form-control" ng-model="vm.ingredient.infos"></textarea>-->
       </div>
     </div>
   </div>

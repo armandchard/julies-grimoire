@@ -25,6 +25,7 @@
       'angular-flot',
       'tmh.dynamicLocale',
       'ngLodash',
+      'summernote',
 
       //////
 

@@ -43,7 +43,7 @@
               <td><a ng-click="vm.showForm(ingredient); $event.stopPropagation();">{{ingredient.name}}</a></td>
               <td>{{ingredient.price}}</td>
               <td>{{ingredient.quantity}}</td>
-              <td>{{ingredient.infos}}</td>
+              <td ng-bind-html="ingredient.infos"></td>
               <td>
                 <div class="text-right">
                   <button class="btn btn-primary btn-circle btn-outline" ng-click="vm.deleteIngredient(ingredient); $event.stopPropagation();"><i class="fa fa-trash" aria-hidden="true"></i></button>
