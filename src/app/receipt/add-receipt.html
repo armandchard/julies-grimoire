@@ -110,7 +110,7 @@
                 </div>
                 <div class="vertical-timeline-content">
                   <h2>{{step.title}}</h2>
-                  <p ng-bind-html="step.description"></p>
+                  <p>{{step.description}}</p>
                   <a ng-click="vm.remove($index)" class="btn btn-circle btn-outline btn-primary"><i class="fa fa-trash" aria-hidden="true"></i></a>
                   <a ng-click="vm.showStepForm(step)" class="btn btn-circle btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                 </div>
