@@ -24,22 +24,22 @@
               <div class="form-group">
                 <div class="col-md-2">
                   <label class="control-label">Nom</label>
-                  <input type="text" class="form-control" ng-model="vm.receipt.name">
+                  <input type="text" class="form-control" ng-model="vm.receipt.name" autofocus>
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-md-3">
                   <label class="control-label">Catégories</label>
-                  <select multiple chosen class="form-control chosen-select" ng-model="vm.receipt.categories" data-placeholder-text-single="'Choisir les catégories'"
-                    ng-options="category.name for category in vm.categories">
+                  <select multiple chosen class="form-control chosen-select" ng-model="vm.receipt.categories" placeholder-text-multiple="'Choisir les catégories'"
+                    ng-options="category.name as category.name for category in vm.categories">
                   </select>
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-md-7">
                   <label class="control-label">Ingrédients</label>
-                  <select multiple chosen class="form-control chosen-select" ng-model="vm.receipt.ingredients" data-placeholder-text-single="'Choisir tous les ingrédients'"
-                    ng-options="ingredient.name for ingredient in vm.ingredients">
+                  <select multiple chosen class="form-control chosen-select" ng-model="vm.receipt.ingredients" placeholder-text-multiple="'Choisir tous les ingrédients'"
+                    ng-options="ingredient as ingredient.name for ingredient in vm.ingredients">
                     <!--<option ng-repeat="ingredient.name as ingredient in vm.ingredients" ng-value="ingredient">{{ingredient}}</option>-->
                   </select>
                 </div>
@@ -61,7 +61,7 @@
                     <tr ng-repeat="ingredient in vm.receipt.ingredients">
                       <td><a ng-click="vm.showForm(ingredient); $event.stopPropagation();">{{ingredient.name}}</a></td>
                       <td>
-                        <input touch-spin spin-options="vm.spinOption" ng-model="ingredient.percent" ng-change="vm.changePercent(ingredient)" ng-model-options='{ debounce: 1000 }'>
+                        <input type="number" step="0.01" ng-model="ingredient.percent" ng-change="vm.changePercent(ingredient)" ng-model-options='{ debounce: 1000 }'>
                       </td>
                       <td>{{ingredient.gramme}} g</td>
                       <td>{{ingredient.cost}} €</td>
@@ -77,7 +77,7 @@
                         Quantité totale :
                         <!--<input type="number" min="0" max="100" class="col-md-1 form-control" ng-model="vm.receipt.totalQuantity" ng-change="vm.changeQuantity()"
                           ng-model-options='{ debounce: 1000 }'>-->
-                        <input type="number" touch-spin spin-options="vm.spinOption2" ng-model="vm.receipt.totalQuantity" ng-change="vm.changeQuantity()"
+                        <input type="number" step="1" ng-model="vm.receipt.totalQuantity" ng-change="vm.changeQuantity()"
                           ng-model-options='{ debounce: 1000 }'></td>
                       </td>
                       <td colspan="1" align="right">
@@ -138,7 +138,7 @@
                         <img ng-src="{{image.url}}" />
                       </div>
                       <div class="btn-group">
-                        <a class="btn btn-xs btn-danger" ng-click="vm.removeFile($index, image.id)">Supprimer</a>
+                        <a class="btn btn-xs btn-danger" ng-click="vm.removeFile($index, image.name)">Supprimer</a>
                       </div>
                     </div>
                   </div>

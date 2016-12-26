@@ -32,7 +32,6 @@
 }
 
 .contact-box.center-version {
-
   border: 1px solid @border-color;
   padding: 0;
 }
@@ -201,21 +200,6 @@ ul.clear-list:first-child {
   border-bottom: 1px solid @border-color;
   border-left: 1px solid @border-color;
   background: #f8f8f8;
-}
-
-.timeline-item .date i.sale {
-  background: #273d6a;
-  color: #ffffff;
-}
-
-.timeline-item .date i.stock {
-  background: #e8455e;
-  color: #ffffff;
-}
-
-.timeline-item .date i.receive {
-  background: #676e70;
-  color: #f8f8f8;
 }
 
 .timeline-item .date {
@@ -1075,22 +1059,25 @@ del {
 /* E-commerce */
 .product-box {
   padding: 0;
-
   border: 1px solid @border-color;
+  border-radius: .25em;
 }
 
 .product-box:hover,
 .product-box.active {
   border: 1px solid transparent;
+  /*
   -webkit-box-shadow: 0 3px 7px 0 rgba(168, 168, 168, 1);
   -moz-box-shadow: 0 3px 7px 0 rgba(168, 168, 168, 1);
   box-shadow: 0 3px 7px 0 rgba(168, 168, 168, 1);
+  */
+  border: 1px solid #e8455e;
 }
 
 .product-imitation {
   text-align: center;
-  padding: 90px 0;
-  background-color: lighten(@gray, 2%);
+  // padding: 90px 0;
+  // background-color: lighten(@gray, 2%);
   color: darken(@gray, 20%);
   font-weight: 600;
 }
@@ -1110,6 +1097,7 @@ del {
 .product-desc {
   padding: 20px;
   position: relative;
+  cursor: pointer;
 }
 
 .ecommerce .tag-list {
@@ -1149,9 +1137,15 @@ table.shoping-cart-table {
 .product-name {
   font-size: 16px;
   font-weight: 600;
-  color: @text-color;
+  color: #273d6a;
   display: block;
-  margin: 2px 0 5px 0;
+  margin: 2px 0 2px 0;
+  max-width: 80%;
+  font-weight: 400;
+}
+
+.product-categorie {
+  display: block;
 }
 
 .product-name:hover,
@@ -1165,10 +1159,17 @@ table.shoping-cart-table {
   color: #ffffff;
   background-color: @navy;
   padding: 6px 12px;
-
   position: absolute;
-  top: -32px;
   right: 0;
+  top: -32px;
+}
+
+.product-brand{
+  font-weight: bold;
+  display: block;
+  color: #e8455e;
+  text-transform: uppercase;
+  font-size:1em;
 }
 
 .product-detail .ibox-content {
@@ -1176,10 +1177,18 @@ table.shoping-cart-table {
 }
 
 .image-imitation {
-  background-color: lighten(@gray, 2%);
+  // background-color: lighten(@gray, 2%);
   text-align: center;
-  padding: 200px 0;
+  // padding: 200px 0;
+  display: inline-block;
+}
 
+.slick-next {
+  right: 5px;
+}
+
+.slick-prev {
+  left: 5px;
 }
 
 .product-main-price small {
@@ -1373,4 +1382,3 @@ body.body-small .vote-icon {
 .lightBoxGallery img {
   margin: 5px
 }
-

@@ -22,7 +22,7 @@
     "angular-translate": "^2.11.0",
     "angular-csv-import-tmp": "angular-csv-import#^0.0.29",
     "angular-ladda": "^0.3.4",
-    "angular-chosen-localytics": "^1.4.2",
+    "angular-chosen-localytics": "^1.5.1",
     "angular-toastr": "^1.7.0",
     "angular-datatables": "^0.5.4",
     "textAngular": "^1.5.2",

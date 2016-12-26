@@ -25,13 +25,11 @@
       'angular-flot',
       'tmh.dynamicLocale',
       'ngLodash',
-      'wu.masonry',
 
       //////
 
       'mbc.core',
       'mbc.auth',
-      'mbc.sale',
       'mbc.layout',
       'mbc.category',
       'mbc.ingredient',
