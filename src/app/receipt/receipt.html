@@ -39,7 +39,7 @@
                   </div>
                 </div>
               </slick>
-              <img ng-if="::receipt.images.length === 0" src="../../assets/images/MBC_grey_logo.png" alt="{{::receipt.name}}">
+              <img ng-if="!receipt.images || receipt.images.length === 0" src="../../assets/images/MBC_grey_logo.png" alt="{{::receipt.name}}">
             </div>
             <div class="product-desc" ui-sref="index.edit-receipt({id:receipt.$id})">
               <span class="product-price">
