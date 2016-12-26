@@ -27,35 +27,34 @@
   </div>
   <div class="row" ng-if="!vm.loading">
     <div class="row">
-      <div masonry>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 masonry-brick" ng-repeat="receipt in vm.receipts | filter: vm.filter">
-          <div class="ibox">
-            <div class="ibox-content product-box">
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-repeat="receipt in vm.receipts | filter: vm.filter">
+        <div class="ibox">
+          <div class="ibox-content product-box">
 
-              <div class="product-imitation">
-                <slick ng-if="::receipt.images.length > 0" dots="true">
-                  <div ng-repeat="image in ::receipt.images">
-                    <div class="image-imitation">
-                      <img ng-src="{{::image.url}}" alt="image.name">
-                    </div>
+            <div class="product-imitation">
+              <slick ng-if="::receipt.images.length > 0" dots="true">
+                <div ng-repeat="image in ::receipt.images">
+                  <div class="image-imitation">
+                    <img ng-src="{{::image.url}}" alt="image.name" style="max-width: 100%">
                   </div>
-                </slick>
-                <img ng-if="::receipt.images.length === 0" src="../../assets/images/MBC_grey_logo.png" alt="{{::receipt.name}}">
-              </div>
-              <div class="product-desc" ng-click="vm.showDetail(product)">
-                <span class="product-price">
+                </div>
+              </slick>
+              <img ng-if="::receipt.images.length === 0" src="../../assets/images/MBC_grey_logo.png" alt="{{::receipt.name}}">
+            </div>
+            <div class="product-desc" ui-sref="index.edit-receipt({id:receipt.$id})">
+              <span class="product-price">
                   {{receipt.price}} €
                 </span>
-                <small class="text-muted">{{receipt.category.name}}</small>
-                <a class="product-name">{{::product.base_name}}</a>
-                <a ui-sref="index.edit-receipt({id:receipt.$id})" class="product-name"> {{receipt.name}}</a>
-                <div class="small m-t-xs">
-                  {{receipt.description}}
-                </div>
-                <div class="m-t text-right">
-                  <a ui-sref="index.edit-receipt({id:receipt.$id})" class="btn btn-xs btn-outline btn-primary">Détails <i class="fa fa-long-arrow-right"></i> </a>
-                  <a ng-click="vm.remove(receipt)" class="btn btn-circle btn-outline btn-primary"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                </div>
+              <small class="text-muted">{{receipt.category.name}}</small>
+              <a class="product-name">{{::product.base_name}}</a>
+              <a ui-sref="index.edit-receipt({id:receipt.$id})" class="product-name"> {{receipt.name}}</a>
+              <div class="small m-t-xs">
+                {{receipt.description}}
+              </div>
+              <div class="m-t text-right">
+                <a ui-sref="index.edit-receipt({id:receipt.$id})" class="btn btn-xs btn-outline btn-primary">Détails <i class="fa fa-long-arrow-right"></i> </a>
+                <a ng-click="vm.duplicate(receipt);$event.stopPropagation();" class="btn btn-circle btn-outline btn-primary"><i class="fa fa-clone" aria-hidden="true"></i></a>
+                <a ng-click="vm.remove(receipt);$event.stopPropagation();" class="btn btn-circle btn-outline btn-primary"><i class="fa fa-trash" aria-hidden="true"></i></a>
               </div>
             </div>
           </div>

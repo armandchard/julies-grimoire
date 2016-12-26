@@ -4,9 +4,9 @@
   angular.module('mbc.receipt')
     .controller('ReceiptDetailController', receiptDetailController);
 
-  receiptDetailController.$inject = ['$q', '$stateParams', '$filter', 'receiptService', 'firebaseDataService', 'toastr', '$firebaseObject', 'firebaseStorageService', '$uibModal'];
+  receiptDetailController.$inject = ['$q', '$stateParams', '$filter', 'firebaseDataService', 'toastr', '$firebaseObject', 'firebaseStorageService', '$uibModal'];
 
-  function receiptDetailController($q, $stateParams, $filter, receiptService, firebaseDataService, toastr, $firebaseObject, firebaseStorageService, $uibModal) {
+  function receiptDetailController($q, $stateParams, $filter, firebaseDataService, toastr, $firebaseObject, firebaseStorageService, $uibModal) {
     var vm = this;
     vm.loading = false;
     vm.spinOption = {
@@ -41,6 +41,7 @@
         vm.receipt.$save();
       }
     };
+
     if (angular.isDefined($stateParams.id)) {
       vm.id = $stateParams.id;
       var ref = firebase.database().ref().child('receipts/' + $stateParams.id);
@@ -57,6 +58,7 @@
     vm.changeQuantity = changeQuantity;
     vm.showStepForm = showStepForm;
     vm.remove = remove;
+    vm.removeFile = removeFile;
 
     firebaseDataService.getReceipts()
       .$loaded(function (data) {
@@ -73,17 +75,17 @@
 
     function changePercent(ingredient) {
       if (angular.isDefined(vm.receipt.totalQuantity) && vm.receipt.totalQuantity > 0 && ingredient.percent !== '') {
-        ingredient.gramme = ((parseInt(ingredient.percent) / 100) * vm.receipt.totalQuantity).toFixed(2);
-        ingredient.cost = ((ingredient.price * ingredient.gramme) / ingredient.quantity).toFixed(2);
+        ingredient.gramme = ((parseFloat(ingredient.percent) / 100) * vm.receipt.totalQuantity).toFixed(2);
+        ingredient.cost = angular.isDefined(ingredient.price) && angular.isDefined(ingredient.gramme) ? ((ingredient.price * ingredient.gramme) / ingredient.quantity).toFixed(2) : 0;
       } else {
 
       }
       vm.receipt.totalCompo = _.sumBy(vm.receipt.ingredients, function (i) {
-        return i.percent !== '' ? parseInt(i.percent) : 0;
+        return i.percent !== '' ? parseFloat(i.percent) : 0;
       });
       vm.receipt.price = _.sumBy(vm.receipt.ingredients, function (i) {
-        return i.cost !== '' ? parseFloat(i.cost) : 0;
-      });
+        return angular.isDefined(i.cost) && i.cost !== '' ? parseFloat(i.cost) : 0;
+      }).toFixed(2);
     }
 
     function changeQuantity() {
@@ -128,17 +130,36 @@
         });
     }
 
+    function removeFile(index, name) {
+      swal({
+        title: 'Etes-vous sûr de vouloir supprimer l\'image?',
+        text: '',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: "#e8455e",
+        confirmButtonText: 'Oui, supprimer!',
+        cancelButtonText: 'Annuler',
+        closeOnConfirm: true
+      },
+        function () {
+          firebaseStorageService.deleteFile(firebaseStorageService.storageProducts.child(vm.receipt.$id).child(name));
+          vm.receipt.images.splice(index, 1);
+          vm.receipt.$save();
+          toastr.success('Image supprimée');
+        });
+    }
+
     function save() {
       var promises = [];
       if (angular.isDefined(vm.receipt.$id)) {
         vm.receipt.$save()
           .then(function () {
-            toastr.success('Sauegarde réussie');
+            toastr.success('Sauvegarde réussie');
           });
       } else {
         vm.receipts.$add(vm.receipt)
           .then(function (ref) {
-            toastr.success('Sauegarde réussie');
+            toastr.success('Sauvegarde réussie');
             vm.receipt = $firebaseObject(firebase.database().ref().child('receipts/' + ref.key));
           })
       }
